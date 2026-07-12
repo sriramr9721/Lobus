@@ -10,3 +10,5 @@ uvicorn
 yt-dlp
 aiofiles
 ffmpeg
+
+thats about it for now we cud add on later on out extra stuff
