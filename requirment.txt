@@ -1,15 +1,22 @@
-languages used- 
-Python
-Html 
-Css
-Javascript
+all the languages we'll need
 
-libraries-
-fastapi
-uvicorn
-yt-dlp
-aiofiles
-ffmpeg
+APP FRAMEWORK-
+react native
+node.js
+react navigation
+ 
+BLUETOOTH & MESH-
+react-native-ble-plx
+mesh routing logic(we gotta come up w code for it, no library)
+UUID
 
-thats about it for now we cud add on later on out extra stuff
-u can add antg ud like too
+LOCAL STORAGE& SECURITY-
+react-native-sqlite-storage
+async storage
+tweetnacl
+
+DEVELOPER & TOOLS-
+android studio 
+xcode(for mac)
+cocoapod(for ios)
+
