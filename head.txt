@@ -1,0 +1,85 @@
+LOBUS - BLUETOOTH MESH MESSENGER PROJECT ROADMAP
+====================================================
+
+PHASE 0 -- ENVIRONMENT SETUP (DONE)
+----------------------------------------------------
+- Node.js, VS Code, Android Studio, adb, PATH -- all sorted
+- Phone authorized over USB
+- Expo project created, pushed to GitHub
+- App running live on phone via Expo Go -- confirmed working
+
+
+PHASE 1 -- SWITCH TO A DEV BUILD (NEXT UP)
+----------------------------------------------------
+Expo Go can't do raw Bluetooth, so a custom build is needed that can.
+
+Steps:
+1. npx expo install react-native-ble-plx
+2. npx expo prebuild          (generates native android/ios folders)
+3. npx expo run:android       (build and install a custom dev build onto the phone)
+
+Goal: same "Welcome to Expo" screen, but now running in a build that
+supports BLE (Bluetooth Low Energy).
+
+
+PHASE 2 -- BASIC BLE HANDSHAKE (THE REAL FIRST MILESTONE)
+----------------------------------------------------
+No UI polish, no mesh -- just prove two phones can talk.
+
+- Get the phone to scan and list nearby Bluetooth devices
+- Connect two phones running the app to each other
+- Send one hardcoded message ("hello") from Phone A -> console log on Phone B
+
+Goal: prove the core Bluetooth link works reliably before building
+anything on top of it.
+
+
+PHASE 3 -- BASIC CHAT UI
+----------------------------------------------------
+- Simple screen: a text input + send button + a scrolling list of messages
+- Wire the send button to actually send the typed message over BLE
+  (instead of a hardcoded string)
+- Still just two phones, direct connection, no mesh hopping yet
+
+
+PHASE 4 -- MULTI-HOP MESH ROUTING (THE HARD, INTERESTING PART)
+----------------------------------------------------
+- Add message IDs (UUIDs) so phones can recognize duplicates
+- Add "flood and relay" logic -- a phone rebroadcasts messages it
+  hasn't seen before
+- Test with 3 phones: A -> B -> C, where A and C aren't in direct range
+
+Note: this is genuinely the trickiest logic in the whole project --
+expect this phase to take a while.
+
+
+PHASE 5 -- LOCAL STORAGE
+----------------------------------------------------
+- Add SQLite (expo-sqlite) to save chat history so messages persist
+  after closing the app
+- Add AsyncStorage for small settings (username, etc.)
+
+
+PHASE 6 -- ENCRYPTION
+----------------------------------------------------
+- Add tweetnacl to encrypt messages so relaying phones can't read
+  content they're just passing along
+- Matters more once mesh relaying (Phase 4) is working, since messages
+  start hopping through other people's devices
+
+
+PHASE 7 -- POLISH
+----------------------------------------------------
+- Contact list / device discovery UI
+- Message status (sent/delivered indicators)
+- App icon, splash screen, app name showing as "Lobus" properly
+- README with screenshots for the repo
+
+
+====================================================
+REALISTIC FOCUS ORDER:
+Phases 1-2 are the next real hurdle -- everything after that builds
+on whether BLE connection actually works reliably. Don't rush into
+chat UI or mesh logic until two phones can reliably say "hello" to
+each other over Bluetooth.
+====================================================
