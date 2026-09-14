@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "dependencies": {
     "@expo/ui": "~57.0.14",
+    "base-64": "^1.0.0",
+    "convert-string": "^0.1.0",
     "expo": "~57.0.4",
     "expo-constants": "~57.0.3",
     "expo-device": "~57.0.1",
@@ -21,6 +23,7 @@
     "react-dom": "19.2.3",
     "react-native": "0.86.3",
     "react-native-ble-plx": "^3.5.1",
+    "react-native-bluetooth-client": "^0.1.12",
     "react-native-gesture-handler": "~2.32.0",
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
